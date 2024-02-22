@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NDS Inventory Manager 5 Text UM", "NDS Inventory Manager Text\NDS Inventory Manager 5 Text UM.csproj", "{2ABD1B0E-5C79-4C9B-B5EE-CCE4F0857BD6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2ABD1B0E-5C79-4C9B-B5EE-CCE4F0857BD6}.Debug|x64.ActiveCfg = Debug|x64
+		{2ABD1B0E-5C79-4C9B-B5EE-CCE4F0857BD6}.Debug|x64.Build.0 = Debug|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {12BB64DC-87CD-4FA3-B2C1-53ED7ACDFE54}
+	EndGlobalSection
+EndGlobal
