@@ -2,5 +2,6 @@ Backup/*
 *.txt
 NDS Inventory Manager Text/bin/*
 NDS Inventory Manager Text/obj/*
+*MDK.paths.props
 .vs/*
 *.ruleset
