@@ -5702,7 +5702,7 @@ namespace IngameScript
                     InitState(OutputState(), identifier);
                     break;
                 case FunctionIdentifier.Main_Sprites:
-                    InitState(panelMaster.PopulateSpriteState(), identifier);
+                    InitState(panelMaster.PopulateTextState(), identifier);
                     break;
                 case FunctionIdentifier.Processing_Block_Options:
                     InitState(ProcessBlockOptionState(), identifier);
@@ -5747,7 +5747,7 @@ namespace IngameScript
                     InitState(ScanState(), identifier);
                     break;
                 case FunctionIdentifier.Generating_Sprites:
-                    InitState(panelMaster.PopulateSpriteListState(), identifier);
+                    InitState(panelMaster.PopulateTextListState(), identifier);
                     break;
                 case FunctionIdentifier.Item_Panel:
                     InitState(panelMaster.ItemPanelState(), identifier);

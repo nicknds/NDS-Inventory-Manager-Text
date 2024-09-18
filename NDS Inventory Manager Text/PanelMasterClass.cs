@@ -450,14 +450,14 @@ namespace IngameScript
                 }
             }
 
-            bool PopulateSprites()
+            bool PopulateText()
             {
                 selfContainedIdentifier = FunctionIdentifier.Main_Sprites;
 
                 return RunStateManager;
             }
 
-            public IEnumerator<FunctionState> PopulateSpriteState()
+            public IEnumerator<FunctionState> PopulateTextState()
             {
                 yield return stateContinue;
 
@@ -465,15 +465,15 @@ namespace IngameScript
                 {
                     tempPanelDefinition.textBuilder.Clear();
                     if (tempPanelDefinition.panelObjects.Count > 0)
-                        while (!PopulateSpriteList(tempPanelDefinition.panelObjects, false)) yield return stateActive;
+                        while (!PopulateTextList(tempPanelDefinition.panelObjects, false)) yield return stateActive;
                     if (tempPanelDefinition.spannableObjects.Count > 0)
-                        while (!PopulateSpriteList(tempPanelDefinition.spannableObjects, true)) yield return stateActive;
+                        while (!PopulateTextList(tempPanelDefinition.spannableObjects, true)) yield return stateActive;
 
                     yield return stateContinue;
                 }
             }
 
-            bool PopulateSpriteList(List<PanelObject> panelObjects, bool span)
+            bool PopulateTextList(List<PanelObject> panelObjects, bool span)
             {
                 selfContainedIdentifier = FunctionIdentifier.Generating_Sprites;
 
@@ -486,7 +486,7 @@ namespace IngameScript
                 return RunStateManager;
             }
 
-            public IEnumerator<FunctionState> PopulateSpriteListState()
+            public IEnumerator<FunctionState> PopulateTextListState()
             {
                 List<PanelObject> leftoverObjects = NewPanelObjectList;
                 IMyTextSurface surface;
@@ -638,7 +638,7 @@ namespace IngameScript
                         }
                         tempPanelDefinition.nextUpdateTime = Now.AddSeconds(tempPanelDefinition.updateDelay);
 
-                        while (!PopulateSprites()) yield return stateActive;
+                        while (!PopulateText()) yield return stateActive;
                         if (PauseTickRun) yield return stateActive;
                         tempPanelDefinition.Surface.WriteText(tempPanelDefinition.textBuilder);
                         if (tempPanelDefinition.Surface.FontSize == 1f && BuilderHasLength(tempPanelDefinition.textBuilder))
@@ -747,18 +747,21 @@ namespace IngameScript
             public IEnumerator<FunctionState> ItemPanelState()
             {
                 List<ItemDefinition> allItemList = new List<ItemDefinition>(), foundItemList = new List<ItemDefinition>();
+                bool allCategories;
                 yield return stateContinue;
 
                 while (true)
                 {
                     allItemList.Clear();
                     foundItemList.Clear();
+                    allCategories = tempPanelDefinition.itemCategories.Contains("all") ||
+                                    tempPanelDefinition.itemCategories.Contains("*");
                     allItemList.AddRange(parent.GetAllItems);
                     bool found;
                     foreach (ItemDefinition item in allItemList)
                     {
                         if (PauseTickRun) yield return stateActive;
-                        found = tempPanelDefinition.itemCategories.Contains(item.category);
+                        found = allCategories || tempPanelDefinition.itemCategories.Contains(item.category);
                         if (!found) tempPanelDefinition.items.ItemCount(out found, item.typeID, item.subtypeID, null);
                         if (found && item.display && item.amount >= tempPanelDefinition.minimumItemAmount && item.amount <= tempPanelDefinition.maximumItemAmount &&
                             (!tempPanelDefinition.belowQuota || item.amount < item.currentQuota))
