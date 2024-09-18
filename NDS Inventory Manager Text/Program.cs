@@ -24,7 +24,7 @@ namespace IngameScript
 
         #region Short Links
 
-        const string trueString = "true", falseString = "false";
+        const string trueString = "true", falseString = "false", shortEmptyString = "";
         const bool shortTrue = true, shortFalse = false;
 
         IMyGridTerminalSystem gtSystem;
@@ -33,27 +33,26 @@ namespace IngameScript
 
         const FunctionState stateActive = FunctionState.Active, stateContinue = FunctionState.Continue, stateUninitialized = FunctionState.Uninitialized, stateError = FunctionState.Error;
 
-        const TextAlignment leftAlignment = TextAlignment.LEFT, centerAlignment = TextAlignment.CENTER;
-        bool PauseTickRun { get { return UnavailableActions(); } }
-        bool IsStateRunning { get { return StateRunning(selfContainedIdentifier); } }
-        bool RunStateManager { get { return StateManager(selfContainedIdentifier); } }
+        bool PauseTickRun => UnavailableActions();
+        bool IsStateRunning => StateRunning(selfContainedIdentifier);
+        bool RunStateManager => StateManager(selfContainedIdentifier);
 
         double overheatAverage { get { return OverheatAverage; } set { OverheatAverage = value; } }
         double actionLimiterMultiplier { get { return ActionLimiterMultiplier; } set { ActionLimiterMultiplier = value; } }
         double runTimeLimiter { get { return RunTimeLimiter; } set { RunTimeLimiter = value; } }
 
-        int echoDelay { get { return EchoDelay; } }
+        int echoDelay => EchoDelay;
 
-        static List<long> NewLongList { get { return new List<long>(); } }
-        static List<MyInventoryItem> NewItemList { get { return new List<MyInventoryItem>(); } }
-        static List<string> NewStringList { get { return new List<string>(); } }
-        static List<MyProductionItem> NewProductionList { get { return new List<MyProductionItem>(); } }
-        static ItemCollection NewCollection { get { return new ItemCollection(); } }
-        static StringBuilder NewBuilder { get { return new StringBuilder(); } }
-        static SortedList<long, double> NewSortedListLongDouble { get { return new SortedList<long, double>(); } }
-        static HashSet<long> NewHashSetLong { get { return new HashSet<long>(); } }
-        static HashSet<string> NewHashSetString { get { return new HashSet<string>(); } }
-        static DateTime Now { get { return DateTime.Now; } }
+        static List<long> NewLongList => new List<long>();
+        static List<MyInventoryItem> NewItemList => new List<MyInventoryItem>();
+        static List<string> NewStringList => new List<string>();
+        static List<MyProductionItem> NewProductionList => new List<MyProductionItem>();
+        static ItemCollection NewCollection => new ItemCollection();
+        static StringBuilder NewBuilder => new StringBuilder();
+        static SortedList<long, double> NewSortedListLongDouble => new SortedList<long, double>();
+        static HashSet<long> NewHashSetLong => new HashSet<long>();
+        static HashSet<string> NewHashSetString => new HashSet<string>();
+        static DateTime Now => DateTime.Now;
         List<ItemDefinition> GetAllItems
         {
             get
@@ -554,7 +553,7 @@ namespace IngameScript
             tempAmountContainedTypeID, tempAmountContainedSubtypeID,
             tempGetTagsText;
 
-        string echoSpacer { get { return ColoredEcho("".PadRight(4, spacerChars[spacerIndex]), 3); } }
+        string echoSpacer => ColoredEcho("".PadRight(4, spacerChars[spacerIndex]), 3);
 
         static string newLine;
 
@@ -6396,7 +6395,7 @@ namespace IngameScript
         {
             public string text = "";
             public int count = 1;
-            public string Output { get { return count > 1 ? $"{text} x{count}" : text; } }
+            public string Output => count > 1 ? $"{text} x{count}" : text;
 
         }
 
@@ -6443,7 +6442,7 @@ namespace IngameScript
 
             public SortedList<string, VariableItemCount> itemList = new SortedList<string, VariableItemCount>();
 
-            public int ItemTypeCount { get { return itemList.Count; } }
+            public int ItemTypeCount => itemList.Count;
 
             public bool trackAmounts = true;
 
@@ -6627,11 +6626,11 @@ namespace IngameScript
 
             public BlockSettings Settings { get { return isClone && cloneSource != null ? cloneSource.Settings : innerSettings; } set { innerSettings = value; } }
 
-            public bool HasInventory { get { return block.InventoryCount > 0; } }
+            public bool HasInventory => block.InventoryCount > 0;
 
-            public IMyInventory Input { get { return block.GetInventory(0); } }
+            public IMyInventory Input => block.GetInventory(0);
 
-            public bool IsClone { get { return isClone; } }
+            public bool IsClone => isClone;
 
             public BlockDefinition(IMyTerminalBlock block)
             {
@@ -6765,11 +6764,11 @@ namespace IngameScript
 
             public DateTime countRecordTime = Now, dynamicQuotaTime = Now;
 
-            public MyItemType ItemType { get { return new MyItemType(typeID, subtypeID); } }
+            public MyItemType ItemType => new MyItemType(typeID, subtypeID);
 
-            public string FullID { get { return $"{typeID}/{subtypeID}"; } }
+            public string FullID => $"{typeID}/{subtypeID}";
 
-            public double Percentage { get { return currentQuota == 0 ? double.MaxValue : (amount / currentQuota) * 100.0; } }
+            public double Percentage => currentQuota == 0 ? double.MaxValue : (amount / currentQuota) * 100.0;
 
             public void FinalizeKeys()
             {
