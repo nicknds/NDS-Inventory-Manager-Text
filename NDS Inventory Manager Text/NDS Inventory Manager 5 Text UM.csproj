@@ -51,6 +51,7 @@
     <Content Include="Backup 2-8-24.txt" />
     <Content Include="PanelMasterClass.txt" />
     <Content Include="Program - Backup.txt" />
+    <Compile Include="PanelMasterClass.cs" />
     <Compile Include="Program.cs" />
     <AdditionalFiles Include="Instructions.readme" />
     <AdditionalFiles Include="thumb.png" />
