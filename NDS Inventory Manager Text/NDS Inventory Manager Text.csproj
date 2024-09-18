@@ -21,9 +21,4 @@
       <PackageReference Include="Mal.Mdk2.References" Version="2.2.2" />
     </ItemGroup>
 
-    <ItemGroup>
-      <None Remove="Instructions.readme" />
-      <AdditionalFiles Include="Instructions.readme" />
-    </ItemGroup>
-
 </Project>
